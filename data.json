@@ -1,0 +1,14 @@
+data = {
+	"recipes" : [
+		"spagetti",
+		"kotlet drobiowy + ryż",
+		"kotlet drobiowy + ziemnioki",
+		"kotlet schabowy",
+		"klopsiki",
+		"ryba",
+		"ryż z warzywami",
+		"pizza",
+		"tortilla",
+		"burger"
+	]
+}

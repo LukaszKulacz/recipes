@@ -1,1 +1,115 @@
-First test file <b> fa </b>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Co dziś zjemy?</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="data.json"></script>
+	
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	
+  </head>
+  <body>
+  
+	<section class="hero is-fullheight">
+		<div class="hero-head">
+			<nav class="navbar">
+				<div class="container">
+					<div class="navbar-menu">
+						<div class="navbar-end">
+							<span class="navbar-item">
+								<a class="button" href="https://lukaszkulacz.github.io/">
+									<span class="icon">
+										<i class="fa fa-home"></i>
+									</span>
+									<span>Strona domowa</span>
+								</a>
+							</span>
+						
+							<span class="navbar-item">
+								<a class="button" href="https://github.com/LukaszKulacz/recipes">
+									<span class="icon">
+										<i class="fa fa-github"></i>
+									</span>
+									<span>Kod źródłowy</span>
+								</a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		
+		<div class="hero-body">
+			<div class="container has-text-centered">	
+				<div class="column is-6 is-offset-3">
+					<nav class="panel is-6 is-info">
+						<p class="panel-heading">
+						Co dziś zjemy?
+						</p>
+						
+						<div id="recipe-list">
+						
+						</div>
+						
+						<p class="panel-block">
+							<button class="button is-fullwidth" onclick="addData()">
+								Losuj!
+							</button>
+						</p>
+					</nav>
+				</div>
+			</div>
+		</div>
+	<footer class="footer">
+		<div class="content has-text-centered">
+		<p>
+			<strong>Recipes</strong> by <a href="https://github.com/LukaszKulacz">Łukasz Kułacz</a>
+		</p>
+		</div>
+	</footer>	
+	
+	</section>
+	
+   
+   
+  </body>
+</html>
+<script>
+var count = 0;
+let max_count = 5;
+function addData(){
+	count += 1;
+	
+	let i = getRandomInt(0, data['recipes'].length)
+	
+	var p = document.createElement("p");
+	p.classList.add("panel-block");
+	var span = document.createElement("span");
+	span.classList.add("icon");
+	var icon = document.createElement("i");
+	icon.classList.add("fa");
+	icon.classList.add("fa-cutlery");
+	span.appendChild(icon);
+	var text = document.createTextNode(data['recipes'][i]);
+	p.appendChild(span);
+	p.appendChild(text);
+
+	var list = document.getElementById("recipe-list")
+	list.appendChild(p);
+	
+	if (count > 4){
+		list.removeChild(list.childNodes[0]);
+	
+	}
+}
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+</script>
+
